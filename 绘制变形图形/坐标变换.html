@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload="draw('canvas')">
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <script>
+        function draw(id) {
+            var canvas = document.getElementById(id);
+            if (canvas === null) return false;
+            var context = canvas.getContext('2d');
+
+            context.fillStyle='#EEEEFF';
+            context.fillRect(0, 0, 400, 300);
+            
+            // 图形绘制
+            context.translate(200, 50);
+            context.fillStyle='rgba(255, 0, 0, 0.25)';
+            
+            for(var i = 0; i < 50; i++) {
+
+                // 移动坐标原点
+                context.translate(25, 25);
+
+                // 放大图形(水平放大倍数,垂直放大倍数)
+                context.scale(0.95, 0.95);
+
+                // 旋转图形
+                context.rotate(Math.PI / 10);
+
+                // 画长方形
+                context.fillRect(0, 0, 100, 50);
+            }
+        }
+    </script>
+</body>
+</html>
