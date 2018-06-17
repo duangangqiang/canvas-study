@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload="draw('canvas')">
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <script>
+        function draw(id) {
+            var canvas = document.getElementById(id);
+            if (canvas === null) return false;
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.moveTo(20, 20);
+            context.lineTo(100, 20);
+
+            // (控制点横坐标,控制点纵坐标,圆弧终点的横坐标,圆弧终点的纵坐标,圆弧半径)
+            // 控制点并不是圆弧起点!,而是圆弧外的那个坐标点
+            context.arcTo(150,20,150,70,50);
+            context.lineTo(150, 120);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

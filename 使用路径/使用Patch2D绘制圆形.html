@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload="draw('canvas')">
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <script>
+        function draw(id) {
+            var canvas = document.getElementById(id);
+            if (canvas === null) return false;
+            var context = canvas.getContext('2d');
+            context.fillStyle='#EEEEFF';
+            context.fillRect(0, 0, 400, 300);
+            var n = 0;
+            for (var i = 0; i < 10; i++) {
+                var path = new Path2D();
+                path.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true);
+                context.closePath();
+                context.fillStyle='rgba(255, 0, 0, 0.25)';
+                context.fill(path);
+            }
+        }
+    </script>
+</body>
+</html>
