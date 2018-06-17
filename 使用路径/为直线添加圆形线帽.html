@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload="draw('canvas')">
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <script>
+        function draw(id) {
+            var canvas = document.getElementById(id);
+            if (canvas === null) return false;
+
+            var context = canvas.getContext('2d');
+            context.fillStyle='#EEEEFF';
+            context.beginPath();
+            context.lineWidth=10;
+
+            // butt 默认没有线帽
+            // round 圆形线帽
+            // square 正方形线帽 （看起来跟butt没啥区别，但是要长一点）
+            context.lineCap='round';
+            context.moveTo(20, 20);
+            context.lineTo(20, 200);
+            context.closePath();
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
