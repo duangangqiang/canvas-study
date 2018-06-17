@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload="draw('canvas')">
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <script>
+        function draw(id) {
+            var canvas = document.getElementById(id);
+            if (canvas === null) return false;
+            var context = canvas.getContext('2d');
+            context.fillStyle='#EEEEFF';
+            context.beginPath();
+            context.lineWidth=5;
+
+            // 数组中只有一个值，表示线段长度及线段与线段自建的距离都等于该数值
+            // context.setLineDash([5]);
+
+            // 数组中有两个值, 第一个数值代表线段长度，第二个数值表示线段与线段之间的距离
+            // context.setLineDash([5, 10]);
+            
+            // 数组中的值大于3个，则数组中的数值数量应该为偶数，如果不是偶数，自动复制
+            // [5, 10, 15] -> [5, 10, 15, 5, 10, 15]
+            // context.setLineDash([5, 10, 15]);
+            
+            // 4个值,绘制线段的虚线长度轮流为5、15，线段与线段之间的距离将轮流为10、20
+            context.setLineDash([5, 10, 15, 20]);
+        
+            // 可以使用这个方法获取该虚线数组[5, 10, 15, 20]
+            console.log(context.getLineDash());
+            context.moveTo(20, 20);
+            context.lineTo(200, 20);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
